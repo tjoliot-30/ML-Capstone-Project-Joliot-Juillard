@@ -22,17 +22,17 @@ submission:
 
 team:
   - student_id: "REPLACE_ME"
-    name: "REPLACE_ME"
+    name: "Axel Juillard"
     roles: ["REPLACE_ME"]
     contribution_record: "CONTRIBUTIONS.csv"
   - student_id: "REPLACE_ME"
-    name: "REPLACE_ME"
+    name: "Timothée Joliot"
     roles: ["REPLACE_ME"]
     contribution_record: "CONTRIBUTIONS.csv"
 
 environment:
-  operating_system: "REPLACE_ME"
-  python_version: "REPLACE_ME"
+  operating_system: "Windows"
+  python_version: "3.12.16"
   dependency_manifest: "REPLACE_ME_RELATIVE_PATH"
   lock_file: "REPLACE_ME_RELATIVE_PATH"
   quick_replay_command: "python scripts/quick_replay.py --config configs/replay.yaml"

@@ -1,39 +1,39 @@
 # Operations & Decisions Portfolio — Hospital Pharmacy & Critical Drug Inventory
 
-> **Module:** Advanced Machine Learning — ESILV 2026–2027  
-> **Application Domain:** Santé / Pharmacie à Usage Intérieur (PUI) Hospitalière  
-> **Focus:** Supply Chain de Médicaments d'Intérêt Thérapeutique Majeur (MITM)  
-> **Project overview:** Voir [`PROJECT_SUBJECT.md`](PROJECT_SUBJECT.md)
+> **Course:** Advanced Machine Learning — ESILV 2026–2027  
+> **Authors:** Axel Juillard & Timothée Joliot  
+> **Application Domain:** Healthcare / Hospital Pharmacy Supply Chain (MITM Drugs)  
+> **Project Overview:** See [`PROJECT_SUBJECT.md`](PROJECT_SUBJECT.md)
 
 ```text
-advanced-ml-portfolio/
-├── README.md               # Vue d'ensemble du dépôt binôme
-├── PROJECT_SUBJECT.md      # Cadrage métier du sujet Santé (5-6 lignes)
-├── submission.yaml         # Déclarations officielles de soumission
-├── claims_evidence.csv     # Index des preuves scientifiques (TS-01, RL-01, OPS-01)
-├── AI_USE_LOG.md           # Journal de transparence sur l'usage d'IA
-├── CONTRIBUTIONS.csv       # Rôles alternés par session (experiment-lead / evidence-steward)
-├── configs/replay.yaml     # Configuration de replay en deux commandes figées
-├── data/README.md          # Provenance et empreintes cryptographiques des données
-├── artifacts/              # Artefacts figés (final_forecast.csv, q_table.npy)
-├── evidence/               # Reçus contrôlés et sorties de replay
-├── report/release_brief.md # Rapport final de synthèse opérationnelle (≤ 4 pages)
-└── scripts/quick_replay.py # Exécuteur de replay fail-closed
+ML-Capstone-Project-Joliot-Juillard/
+├── README.md               # Repository overview and metadata
+├── PROJECT_SUBJECT.md      # Concise project subject description (English)
+├── submission.yaml         # Formal submission metadata
+├── claims_evidence.csv     # Scientific claims index (TS-01, RL-01, OPS-01)
+├── AI_USE_LOG.md           # Generative AI transparency log
+├── CONTRIBUTIONS.csv       # Pair rotating roles log (lead / steward)
+├── configs/replay.yaml     # Replay configuration
+├── data/README.md          # Data provenance and cryptographic hashes
+├── artifacts/              # Frozen deliverables (final_forecast.csv, q_table.npy)
+├── evidence/               # Controlled receipts and replay outputs
+├── report/release_brief.md # Final synthesis brief (≤ 4 pages)
+└── scripts/quick_replay.py # Fail-closed replay runner
 ```
 
-## Sujet du Capstone en bref
-Ce projet modélise la chaîne logistique critique d'une Pharmacie à Usage Intérieur (PUI) hospitalière confrontée aux tensions d'approvisionnement sur les Médicaments d'Intérêt Thérapeutique Majeur (MITM). Le volet **Time Series** prévoit la demande sur l'horizon de réapprovisionnement de 28 jours (en isolant les périodes de rupture censurées `stockout_flag=1`), tandis que le volet **Reinforcement Learning** apprend une politique de commande par Q-learning arbitrant entre coût de stockage frigorifique et risque vital de rupture en soins intensifs.
+## Project Summary
+This project models the critical supply chain of a Hospital In-House Pharmacy (PUI) managing Major Therapeutic Interest Medicines (MITM). The **Time Series** strand forecasts 28-day antibiotic demand while accounting for censored demand during stockouts (`stockout_flag=1`). The **Reinforcement Learning** strand trains a tabular Q-learning agent to balance cold-storage costs against the severe clinical risks of ICU stockouts.
 
-## Métadonnées d'environnement binôme
+## Environment & Pair Metadata
 
-- **Système d'exploitation :** Windows (x86_64)
-- **Environnement Python :** Python 3.12.16 verrouillé via `uv`
-- **CPU de référence :** Intel Core i7 / AMD Ryzen (exécution locale CPU garantie)
-- **Statut des preuves TD1 :** baseline saisonnière lag-7 figée (`TS-01` dans `claims_evidence.csv`, MAE 9.61 vs 12.56)
+- **Authors:** Axel Juillard & Timothée Joliot
+- **Operating System:** Windows (x86_64)
+- **Python Environment:** Python 3.12.16 locked via `uv`
+- **TD1 Status:** Baseline evidence recorded (`TS-01` in `claims_evidence.csv`, lag-7 MAE 9.61 vs. mean 12.56)
 
-## Quick replay
+## Quick Replay
 
-Depuis la racine du dépôt :
+From the repository root:
 
 ```bash
 python scripts/quick_replay.py --config configs/replay.yaml
