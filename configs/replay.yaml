@@ -1,0 +1,23 @@
+schema_version: 2
+commands:
+  - strand: forecasting
+    frozen_replay_only: true
+    changes_model_or_protocol: false
+    script_path: "REPLACE_ME_FORECAST_REPLAY_SCRIPT.py"
+    argv: ["python", "REPLACE_ME_FORECAST_REPLAY_SCRIPT.py", "--config", "REPLACE_ME_FORECAST_CONFIG.yaml", "--output", "evidence/replay/forecasting/result.json"]
+    configuration_inputs:
+      - "REPLACE_ME_FORECAST_CONFIG.yaml"
+    data_inputs:
+      - "REPLACE_ME_FORECAST_DATA_OR_MANIFEST.csv"
+    expected_output: "evidence/replay/forecasting/result.json"
+  - strand: reinforcement_learning
+    frozen_replay_only: true
+    changes_model_or_protocol: false
+    script_path: "REPLACE_ME_RL_PUBLIC_EVALUATOR.py"
+    argv: ["python", "REPLACE_ME_RL_PUBLIC_EVALUATOR.py", "--config", "REPLACE_ME_RL_CONFIG.yaml", "--q-table", "artifacts/q_table.npy", "--output", "evidence/replay/reinforcement_learning/result.json"]
+    configuration_inputs:
+      - "REPLACE_ME_RL_CONFIG.yaml"
+    data_inputs:
+      - "REPLACE_ME_RL_ENVIRONMENT_SPEC_OR_MANIFEST.yaml"
+      - "artifacts/q_table.npy"
+    expected_output: "evidence/replay/reinforcement_learning/result.json"

@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>README</title><link rel="stylesheet" href="../../../../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../../../../index.html">Course start</a> · <a href="../../../../../00_start/SETUP.html">Setup</a> · <a href="../../../../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="evidence-directory">Evidence directory</h1>
+<p>Store only selected two-strand replay outputs and instructor-returned controlled
+artifacts referenced by the claim index. Keep original TD1–TD4/TDo1/TDo2
+evidence at its frozen repository path; do not duplicate full notebook trees.</p>
+<p><code>quick_replay.py</code> writes <code>quick_replay_status.json</code> on every attempt and writes
+<code>quick_replay_receipt.json</code> only after both declared outputs are freshly created
+or refreshed and every declared input remains unchanged.</p>
+<p>The <code>controlled/</code> directory holds target-free forecast evidence and aggregate
+RL evidence. It must never contain protected demand targets, hidden seeds or
+seed-level controlled episodes.</p>
+</main></body></html>

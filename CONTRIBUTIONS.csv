@@ -1,0 +1,2 @@
+date_utc,session_or_artifact,student_id,role,contribution,claim_ids,evidence_path,reviewed_by
+REPLACE_ME,TD1,REPLACE_ME,forecast_baseline_owner,"Initialized portfolio; froze temporal boundary and seasonal-naive baseline pointers",TS-01,REPLACE_ME_TD1_EVIDENCE_PATH,REPLACE_ME

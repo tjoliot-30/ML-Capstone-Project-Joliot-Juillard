@@ -1,0 +1,102 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>README</title><link rel="stylesheet" href="../../../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../../../index.html">Course start</a> · <a href="../../../../00_start/SETUP.html">Setup</a> · <a href="../../../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="operations--decisions-portfolio--pair-repository">Operations &amp; Decisions Portfolio — pair repository</h1>
+<p>Copy this directory's <strong>contents</strong> to the stable-pair repository root during
+TD1. Maintain the same repository through the six scheduled practical sessions.
+The final curation is out-of-class work; it is not a seventh TD/TDo and must not
+contain new fitting, tuning, model selection or policy training.</p>
+<pre><code class="language-text">advanced-ml-portfolio/
+├── README.md
+├── submission.yaml
+├── claims_evidence.csv
+├── AI_USE_LOG.md
+├── CONTRIBUTIONS.csv
+├── configs/replay.yaml
+├── data/README.md
+├── artifacts/
+│   ├── final_forecast.csv
+│   └── q_table.npy
+├── evidence/
+│   ├── controlled/
+│   └── replay/
+│       ├── forecasting/
+│       └── reinforcement_learning/
+├── report/release_brief.md
+└── scripts/quick_replay.py
+</code></pre>
+<h2 id="progressive-reuse-without-a-seventh-session">Progressive reuse without a seventh session</h2>
+<table>
+<thead>
+<tr>
+<th>Existing session</th>
+<th>Repository action before leaving</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TD1</td>
+<td>Initialize the skeleton; freeze data hash, time boundary, seasonal-naive baseline and first <code>TS-01</code> pointers.</td>
+</tr>
+<tr>
+<td>TD2</td>
+<td>Add rolling-origin model comparison, information-boundary audit, failure period and configuration paths.</td>
+</tr>
+<tr>
+<td>TD3</td>
+<td>Freeze MDP/reward contract and random/reorder baselines; start <code>RL-01</code>.</td>
+</tr>
+<tr>
+<td>TD4</td>
+<td>Add frozen Q-table, learning configuration and independent development evaluation.</td>
+</tr>
+<tr>
+<td>TDo1</td>
+<td>Freeze the forecasting release, final 28-day forecast CSV and controlled handoff.</td>
+</tr>
+<tr>
+<td>TDo2</td>
+<td>Freeze the RL safety release and handoff; complete <code>OPS-01</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>These are evidence-capture actions inside the scheduled work, not extra tasks.
+The final quick replay still samples exactly one frozen release command per
+strand; it does not rerun all six notebooks.</p>
+<h2 id="required-release">Required release</h2>
+<ul>
+<li><strong>Forecasting release:</strong> TD1 time/baseline evidence, TD2 rolling-origin model
+evidence, TDo1 release evidence and the protected-horizon receipt.</li>
+<li><strong>RL policy release:</strong> TD3 environment/baseline evidence, TD4 frozen policy
+evidence, TDo2 safety evidence and the controlled-batch aggregate/receipt.</li>
+<li><strong>Operational/safety synthesis:</strong> a conditional go/hold/no-go decision, named
+fallback and refusal boundary, derived from the two releases.</li>
+</ul>
+<p>The synthesis is not an integration experiment. Unless separate end-to-end
+evidence exists outside this module, state explicitly that the forecast was not
+used as an RL observation and that joint controller performance was not tested.</p>
+<h2 id="pair-release-metadata">Pair release metadata</h2>
+<ul>
+<li><strong>Team and rotating roles:</strong> <code>REPLACE_ME</code></li>
+<li><strong>Tested OS / Python / dependency lock:</strong> <code>REPLACE_ME</code></li>
+<li><strong>Reference CPU / RAM:</strong> <code>REPLACE_ME</code></li>
+<li><strong>Expected two-strand replay time:</strong> <code>REPLACE_ME_MINUTES_AT_MOST_10</code></li>
+<li><strong>Replay outputs:</strong> <code>evidence/replay/forecasting/result.json</code> and
+<code>evidence/replay/reinforcement_learning/result.json</code></li>
+<li><strong>Known failure or deviation:</strong> <code>REPLACE_ME_OR_NONE</code></li>
+<li><strong>Immutable release tag and commit:</strong> <code>REPLACE_ME</code></li>
+</ul>
+<p><code>CONTRIBUTIONS.csv</code> is the only contribution format. <code>AI_USE_LOG.md</code> is the only
+generative-AI log. Each retained result must remain explainable by both students.</p>
+<h2 id="quick-replay">Quick replay</h2>
+<p>Run from the repository root:</p>
+<pre><code class="language-bash">python scripts/quick_replay.py --config configs/replay.yaml
+</code></pre>
+<p>The runner accepts exactly two commands, forecasting then
+reinforcement-learning. It confines paths to the repository, rejects obvious
+training/tuning tokens, hashes scripts/configuration/data, snapshots outputs,
+requires newly created or refreshed regular files, and checks that declared
+inputs did not change. It deletes any older success receipt at attempt start. A
+success receipt is emitted only after both commands pass; otherwise the failed
+status is authoritative.</p>
+<p>The public replay never recreates protected targets or hidden RL seeds. Cite the
+two instructor-issued receipts separately in <code>submission.yaml</code> and
+<code>claims_evidence.csv</code>.</p>
+</main></body></html>

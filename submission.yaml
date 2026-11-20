@@ -1,0 +1,141 @@
+schema_version: "2.0"
+course:
+  code: "TBD_ESILV_CONFIRMED_MODULE_CODE"
+  institution: "ESILV"
+  academic_year: "REPLACE_ME_ESILV_CONFIRMED_YEAR"
+
+submission:
+  team_id: "REPLACE_ME"
+  submitted_at_utc: "REPLACE_ME_ISO_8601"
+  repository_tag: "REPLACE_ME_IMMUTABLE_RELEASE_TAG"
+  repository_commit: "REPLACE_ME_FULL_COMMIT_HASH"
+  prior_evidence_tag_or_commit: "REPLACE_ME_FROZEN_SIX_SESSION_EVIDENCE_REVISION"
+  claim_index: "claims_evidence.csv"
+  ai_use_log: "AI_USE_LOG.md"
+  contribution_log: "CONTRIBUTIONS.csv"
+  release_brief: "report/release_brief.md"
+  quick_replay_receipt: "evidence/quick_replay_receipt.json"
+  quick_replay_status: "evidence/quick_replay_status.json"
+  total_claims: null
+  expected_pair_work_hours: "6-8"
+  actual_pair_work_hours: null
+
+team:
+  - student_id: "REPLACE_ME"
+    name: "REPLACE_ME"
+    roles: ["REPLACE_ME"]
+    contribution_record: "CONTRIBUTIONS.csv"
+  - student_id: "REPLACE_ME"
+    name: "REPLACE_ME"
+    roles: ["REPLACE_ME"]
+    contribution_record: "CONTRIBUTIONS.csv"
+
+environment:
+  operating_system: "REPLACE_ME"
+  python_version: "REPLACE_ME"
+  dependency_manifest: "REPLACE_ME_RELATIVE_PATH"
+  lock_file: "REPLACE_ME_RELATIVE_PATH"
+  quick_replay_command: "python scripts/quick_replay.py --config configs/replay.yaml"
+  quick_expected_runtime_minutes: "REPLACE_ME_INTEGER_AT_MOST_10"
+  hardware:
+    cpu: "REPLACE_ME"
+    logical_cores: "REPLACE_ME_INTEGER"
+    ram_gib: "REPLACE_ME_NUMBER"
+    accelerator: "none"
+  paid_or_external_services:
+    used: null
+    details: "REPLACE_ME_OR_NONE"
+
+replay_policy:
+  command_count: 2
+  command_order: ["forecasting", "reinforcement_learning"]
+  no_new_fitting_training_tuning_selection_or_sweep: null
+  same_data_and_environment_boundaries_as_prior_work: null
+  same_methods_configuration_seeds_and_budgets_as_prior_work: null
+  expected_outputs_are_fresh_for_this_attempt: null
+  deviations_or_failures: "REPLACE_ME_OR_NONE_WITH_EVIDENCE_PATH"
+
+randomness:
+  declared_development_seeds: [11, 23, 37, 51, 71]
+  development_seed_configuration_path: "REPLACE_ME_RELATIVE_PATH"
+  hidden_forecast_targets_exported_to_student_repository: false
+  hidden_rl_seed_values_exported_to_student_repository: false
+
+datasets:
+  - dataset_id: "daily_demand"
+    strand: "forecasting"
+    source_url_or_course_id: "course:daily_demand"
+    version_or_retrieved_at: "REPLACE_ME_SHA256_OR_MANIFEST_VERSION"
+    licence_or_access_status: "synthetic_course_data"
+    local_provenance_note: "data/README.md"
+    contains_personal_or_restricted_data: false
+
+environments:
+  - environment_id: "InventoryControlEnv"
+    strand: "reinforcement_learning"
+    package_and_version: "course_shared_code_at_repository_commit"
+    specification_path: "REPLACE_ME_RELATIVE_PATH"
+
+release_claims:
+  forecasting_release:
+    claim_id: "TS-01"
+    source_sessions: ["TD1", "TD2", "TDo1"]
+  rl_policy_release:
+    claim_id: "RL-01"
+    source_sessions: ["TD3", "TD4", "TDo2"]
+  operational_safety_synthesis:
+    claim_id: "OPS-01"
+    source_claim_ids: ["TS-01", "RL-01"]
+  supporting_claim_ids: []
+
+replays:
+  forecasting:
+    claim_id: "TS-01"
+    entry_point: "REPLACE_ME_FROZEN_FORECAST_REPLAY_SCRIPT.py"
+    config: "REPLACE_ME_FROZEN_FORECAST_CONFIG.yaml"
+    data_or_manifest: "REPLACE_ME_FORECAST_DATA_OR_MANIFEST.csv"
+    prior_evidence: "REPLACE_ME_TDO1_EVIDENCE_PATH"
+    replay_evidence: "evidence/replay/forecasting/result.json"
+  reinforcement_learning:
+    claim_id: "RL-01"
+    entry_point: "REPLACE_ME_FROZEN_RL_PUBLIC_EVALUATOR.py"
+    config: "REPLACE_ME_FROZEN_RL_CONFIG.yaml"
+    data_or_manifest: "REPLACE_ME_RL_ENVIRONMENT_SPEC_OR_MANIFEST.yaml"
+    prior_evidence: "REPLACE_ME_TDO2_EVIDENCE_PATH"
+    replay_evidence: "evidence/replay/reinforcement_learning/result.json"
+
+controlled_evaluations:
+  forecasting:
+    frozen_artifact: "artifacts/final_forecast.csv"
+    artifact_sha256: "REPLACE_ME_SHA256"
+    evidence_id: "REPLACE_ME_FORECAST_RECEIPT_SUBMISSION_ID"
+    receipt_path: "evidence/controlled/forecast_holdout_receipt.json"
+    hidden_targets_exported: false
+  reinforcement_learning:
+    frozen_artifact: "artifacts/q_table.npy"
+    artifact_sha256: "REPLACE_ME_SHA256"
+    evidence_id: "REPLACE_ME_INSTRUCTOR_EVIDENCE_ID"
+    aggregate_path: "evidence/controlled/rl_hidden_evaluation_aggregate.csv"
+    aggregate_sha256_path: "evidence/controlled/rl_hidden_evaluation_aggregate.csv.sha256"
+    receipt_path: "evidence/controlled/rl_hidden_evaluation_receipt.yaml"
+    receipt_sha256_path: "evidence/controlled/rl_hidden_evaluation_receipt.yaml.sha256"
+    hidden_seed_values_exported: false
+
+ai_use:
+  used: null
+  tools: []
+  material_artifacts_affected: []
+  declaration: "We verified every retained output and remain responsible for the submission."
+
+declarations:
+  claim_count_3_to_6_and_required_roles_verified: null
+  empirical_claims_follow_the_two_strands_across_all_six_sessions: null
+  prior_evidence_is_frozen_and_traceable: null
+  replay_has_exactly_two_frozen_commands: null
+  replay_deviations_and_failures_are_disclosed: null
+  controlled_receipts_match_frozen_artifacts: null
+  no_end_to_end_forecast_RL_validation_is_claimed: null
+  all_results_trace_to_submitted_artifacts: null
+  data_use_is_authorised_and_documented: null
+  no_hidden_targets_seeds_secrets_or_personal_data: null
+  both_students_reviewed_this_manifest: null

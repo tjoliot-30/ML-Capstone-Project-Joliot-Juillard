@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>README</title><link rel="stylesheet" href="../../../../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../../../../index.html">Course start</a> · <a href="../../../../../00_start/SETUP.html">Setup</a> · <a href="../../../../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="data-and-environment-provenance">Data and environment provenance</h1>
+<p>Complete both rows. Each declared replay input must match a <code>data_inputs</code> path
+in <code>configs/replay.yaml</code>; the success receipt binds its SHA256.</p>
+<table>
+<thead>
+<tr>
+<th>Strand</th>
+<th>Dataset/environment ID</th>
+<th>Version or SHA256</th>
+<th>Declared replay input(s)</th>
+<th>Access/licence</th>
+<th>Unit and target/reward</th>
+<th>Evaluation boundary</th>
+<th>Known limitation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>forecasting</td>
+<td><code>daily_demand:REPLACE_ME</code></td>
+<td><code>REPLACE_ME</code></td>
+<td><code>REPLACE_ME</code></td>
+<td>synthetic course data</td>
+<td>daily demand</td>
+<td>frozen rolling origins and public replay window</td>
+<td>synthetic series; one protected 28-day horizon</td>
+</tr>
+<tr>
+<td>reinforcement_learning</td>
+<td><code>InventoryControlEnv:REPLACE_ME</code></td>
+<td><code>REPLACE_ME</code></td>
+<td><code>REPLACE_ME</code></td>
+<td>synthetic course environment</td>
+<td>inventory cost and fill rate</td>
+<td>frozen policy on independent public seeds</td>
+<td>discrete simplified dynamics</td>
+</tr>
+</tbody>
+</table>
+<p>Do not copy protected demand targets, controlled RL seeds, private episode rows,
+personal data or restricted datasets. If approved data remains external, commit
+and hash the course-issued manifest used by the replay.</p>
+</main></body></html>
