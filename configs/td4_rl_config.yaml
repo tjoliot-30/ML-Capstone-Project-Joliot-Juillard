@@ -1,4 +1,4 @@
-# Frozen TD3/TD4 RL MDP & Tabular Q-Learning Configuration
+# Frozen TD3 / TD4 / TDo2 RL MDP & Safety Configuration
 environment_id: "InventoryControlEnv"
 mdp_config:
   max_stock: 8
@@ -23,6 +23,14 @@ development_evaluation:
     q_learning: {cost: 42.78, fill_rate: 0.9850, unmet_demand: 1.8}
     reorder: {cost: 42.48, fill_rate: 0.9883, unmet_demand: 1.4}
     random: {cost: 87.75, fill_rate: 0.8125, unmet_demand: 15.2}
+tdo2_public_safety:
+  disjoint_seeds: [200011, 200023, 200037, 200051, 200071]
+  results_ci95:
+    q_learning: {cost_mean: 38.22, cost_ci: [32.49, 43.95], fill_mean: 0.9850, fill_ci: [0.9715, 0.9985], unmet_mean: 1.80}
+    reorder: {cost_mean: 39.03, cost_ci: [34.98, 43.08], fill_mean: 0.9867, fill_ci: [0.9774, 0.9959], unmet_mean: 1.60}
+    random: {cost_mean: 75.33, cost_ci: [57.29, 93.37], fill_mean: 0.8883, fill_ci: [0.8066, 0.9701], unmet_mean: 9.00}
+  service_floor: 0.98
+  cost_bound_vs_reorder: 1.05
 frozen_artifact:
   path: "artifacts/q_table.npy"
   shape: [9, 2, 3]

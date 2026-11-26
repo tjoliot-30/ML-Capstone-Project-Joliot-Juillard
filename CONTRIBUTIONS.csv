@@ -7,3 +7,7 @@ date_utc,session_or_artifact,student_id,role,contribution,claim_ids,evidence_pat
 2026-11-26,TD3,ajuillard,evidence_steward,"Mapped healthcare ICU stockout cost asymmetry and recorded baseline comparator metrics in claims_evidence.csv",RL-01,claims_evidence.csv,tjoliot
 2026-11-26,TD4,ajuillard,experiment_lead,"Implemented 1750-episode tabular Q-learning loop with linear epsilon decay and truncation bootstrapping",RL-01,02_labs/TD4_tabular_q_learning/student_starter.ipynb,tjoliot
 2026-11-26,TD4,tjoliot,evidence_steward,"Evaluated frozen Q-table on 5 disjoint dev seeds, saved artifacts/q_table.npy with SHA256 and td4_rl_config.yaml",RL-01,artifacts/q_table.npy,ajuillard
+2026-11-26,TDo1,tjoliot,experiment_lead,"Evaluated 80%/95% SARIMA interval coverage across 42 cases, applied 5% rule, froze artifacts/final_forecast.csv",TS-01,artifacts/final_forecast.csv,ajuillard
+2026-11-26,TDo1,ajuillard,evidence_steward,"Verified nested interval schema, zero target leakage, SHA256 8fe96aba..., and updated TS-01 provenance",TS-01,02_labs/TDo1_forecasting_release/student_starter.ipynb,tjoliot
+2026-11-26,TDo2,ajuillard,experiment_lead,"Ran public safety replay (200011..200071), implemented seed-injected evaluator and individual transition audit",RL-01,02_labs/TDo2_rl_safety_release/student_starter.ipynb,tjoliot
+2026-11-26,TDo2,tjoliot,evidence_steward,"Drafted risk register, release-gate evaluator, and cross-strand synthesis claim OPS-01 pending receipts",OPS-01,claims_evidence.csv,ajuillard

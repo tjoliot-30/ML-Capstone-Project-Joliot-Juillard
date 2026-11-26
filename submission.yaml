@@ -16,18 +16,18 @@ submission:
   release_brief: "report/release_brief.md"
   quick_replay_receipt: "evidence/quick_replay_receipt.json"
   quick_replay_status: "evidence/quick_replay_status.json"
-  total_claims: null
+  total_claims: 3
   expected_pair_work_hours: "6-8"
   actual_pair_work_hours: null
 
 team:
   - student_id: "ajuillard"
     name: "Axel Juillard"
-    roles: ["experiment_lead (TD2, TD4)", "evidence_steward (TD1, TD3)"]
+    roles: ["experiment_lead (TD2, TD4, TDo2)", "evidence_steward (TD1, TD3, TDo1)"]
     contribution_record: "CONTRIBUTIONS.csv"
   - student_id: "tjoliot"
     name: "Timothée Joliot"
-    roles: ["experiment_lead (TD1, TD3)", "evidence_steward (TD2, TD4)"]
+    roles: ["experiment_lead (TD1, TD3, TDo1)", "evidence_steward (TD2, TD4, TDo2)"]
     contribution_record: "CONTRIBUTIONS.csv"
 
 environment:
@@ -107,14 +107,14 @@ replays:
 controlled_evaluations:
   forecasting:
     frozen_artifact: "artifacts/final_forecast.csv"
-    artifact_sha256: "REPLACE_ME_SHA256"
-    evidence_id: "REPLACE_ME_FORECAST_RECEIPT_SUBMISSION_ID"
+    artifact_sha256: "8fe96abade5e5c36d4055ba7da06eea9c2ef408639e821602edce7bf62cd7b3a"
+    evidence_id: "pending_instructor_receipt"
     receipt_path: "evidence/controlled/forecast_holdout_receipt.json"
     hidden_targets_exported: false
   reinforcement_learning:
     frozen_artifact: "artifacts/q_table.npy"
     artifact_sha256: "61cce1915bd5798f53c22529c9dbdca52b38c2c946a5b186e28e2d777f19738e"
-    evidence_id: "REPLACE_ME_INSTRUCTOR_EVIDENCE_ID"
+    evidence_id: "pending_instructor_receipt"
     aggregate_path: "evidence/controlled/rl_hidden_evaluation_aggregate.csv"
     aggregate_sha256_path: "evidence/controlled/rl_hidden_evaluation_aggregate.csv.sha256"
     receipt_path: "evidence/controlled/rl_hidden_evaluation_receipt.yaml"
@@ -126,6 +126,9 @@ ai_use:
   tools: ["AI Coding Assistant"]
   material_artifacts_affected:
     - "02_labs/TD1..TD4 starter notebooks"
+    - "02_labs/TDo1..TDo2 starter notebooks"
+    - "artifacts/final_forecast.csv"
+    - "artifacts/q_table.npy"
     - "configs/td2_forecast_config.yaml"
     - "configs/td4_rl_config.yaml"
     - "claims_evidence.csv"
@@ -133,14 +136,14 @@ ai_use:
   declaration: "We verified every retained output and remain responsible for the submission."
 
 declarations:
-  claim_count_3_to_6_and_required_roles_verified: null
-  empirical_claims_follow_the_two_strands_across_all_six_sessions: null
-  prior_evidence_is_frozen_and_traceable: null
+  claim_count_3_to_6_and_required_roles_verified: true
+  empirical_claims_follow_the_two_strands_across_all_six_sessions: true
+  prior_evidence_is_frozen_and_traceable: true
   replay_has_exactly_two_frozen_commands: null
   replay_deviations_and_failures_are_disclosed: null
   controlled_receipts_match_frozen_artifacts: null
-  no_end_to_end_forecast_RL_validation_is_claimed: null
-  all_results_trace_to_submitted_artifacts: null
-  data_use_is_authorised_and_documented: null
-  no_hidden_targets_seeds_secrets_or_personal_data: null
+  no_end_to_end_forecast_RL_validation_is_claimed: true
+  all_results_trace_to_submitted_artifacts: true
+  data_use_is_authorised_and_documented: true
+  no_hidden_targets_seeds_secrets_or_personal_data: true
   both_students_reviewed_this_manifest: null
