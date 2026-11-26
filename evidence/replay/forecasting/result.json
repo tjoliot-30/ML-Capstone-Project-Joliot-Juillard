@@ -1,0 +1,43 @@
+{
+  "dataset_sha256": "b275d65b07f447957dd01b2b2e5c0b23a7d96d9ee791b2edacfd4bfcab6e4765",
+  "frozen_replay_only": true,
+  "frozen_td2_reference": {
+    "ets_mae_mean": 6.165729,
+    "failure_origin": 1370,
+    "sarima_mae_mean": 6.136343,
+    "seasonal_naive_mae_mean": 7.285714
+  },
+  "strand": "forecasting",
+  "td1_28d_seasonal_naive": {
+    "mae": 9.607143,
+    "smape": 10.13065
+  },
+  "td2_rolling_seasonal_naive": [
+    {
+      "mae": 6.142857,
+      "origin": 1250,
+      "smape": 6.373974
+    },
+    {
+      "mae": 8.785714,
+      "origin": 1310,
+      "smape": 9.156154
+    },
+    {
+      "mae": 6.928571,
+      "origin": 1370,
+      "smape": 8.049094
+    }
+  ],
+  "td2_seasonal_naive_mean_mae": 7.285714,
+  "tdo1_frozen_release": {
+    "artifact_sha256": "8fe96abade5e5c36d4055ba7da06eea9c2ef408639e821602edce7bf62cd7b3a",
+    "date_max": "2026-12-31",
+    "date_min": "2026-12-04",
+    "forecast_max": 109.3977,
+    "forecast_min": 85.0519,
+    "model": "sarima_111_101_7",
+    "nested_bounds_verified": true,
+    "rows": 28
+  }
+}

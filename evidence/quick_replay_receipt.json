@@ -1,0 +1,129 @@
+{
+  "completed_at_utc": "2026-11-26T17:32:27.220224Z",
+  "replay_config": {
+    "bytes": 1350,
+    "path": "configs/replay.yaml",
+    "sha256": "5b2a921617becbe67986df8b75779da6d4d6acd942d15da35eab56ee8e1463cf"
+  },
+  "runner": {
+    "bytes": 13956,
+    "path": "scripts/quick_replay.py",
+    "sha256": "e41b5cc3b9a4dfe61e265c30c248e1c253cfa1adbfcefa30d105b7923bf79321"
+  },
+  "runs": [
+    {
+      "configuration_inputs": [
+        {
+          "bytes": 1129,
+          "path": "configs/td2_forecast_config.yaml",
+          "sha256": "d1118f9bfc94e5c0e4a94f935764980721054ab4d23491161bc24618f13756a9"
+        }
+      ],
+      "data_inputs": [
+        {
+          "bytes": 29013,
+          "path": "shared/datasets/daily_demand_development.csv",
+          "sha256": "b275d65b07f447957dd01b2b2e5c0b23a7d96d9ee791b2edacfd4bfcab6e4765"
+        },
+        {
+          "bytes": 2033,
+          "path": "artifacts/final_forecast.csv",
+          "sha256": "8fe96abade5e5c36d4055ba7da06eea9c2ef408639e821602edce7bf62cd7b3a"
+        }
+      ],
+      "declared_argv": [
+        "python",
+        "scripts/replay_forecasting.py",
+        "--config",
+        "configs/td2_forecast_config.yaml",
+        "--dev-csv",
+        "shared/datasets/daily_demand_development.csv",
+        "--forecast",
+        "artifacts/final_forecast.csv",
+        "--output",
+        "evidence/replay/forecasting/result.json"
+      ],
+      "output_after": {
+        "bytes": 1086,
+        "exists": true,
+        "inode": 9288674231502504,
+        "mtime_ns": 1795714344662380600,
+        "path": "evidence/replay/forecasting/result.json",
+        "sha256": "269db08cb23a255683e745277c9364d322682623f57cc3c7b642d027bfd287be"
+      },
+      "output_before": {
+        "bytes": 1086,
+        "exists": true,
+        "inode": 9288674231502504,
+        "mtime_ns": 1795714235539400400,
+        "path": "evidence/replay/forecasting/result.json",
+        "sha256": "269db08cb23a255683e745277c9364d322682623f57cc3c7b642d027bfd287be"
+      },
+      "script": {
+        "bytes": 4415,
+        "path": "scripts/replay_forecasting.py",
+        "sha256": "f64e9d9452caa663e78f69640631ee7c6733181755418672dd3e635154402f68"
+      },
+      "seconds": 3.083102,
+      "strand": "forecasting"
+    },
+    {
+      "configuration_inputs": [
+        {
+          "bytes": 1489,
+          "path": "configs/td4_rl_config.yaml",
+          "sha256": "5b4ea0bc8967d94ab7804539702876c4f753c7d88dbcb94e499893865bef74ef"
+        }
+      ],
+      "data_inputs": [
+        {
+          "bytes": 3723,
+          "path": "shared/inventory_env.py",
+          "sha256": "c8855fee79739cf14df1b610c60d7527785deedd25c2f40c1dfac8ac8cc91256"
+        },
+        {
+          "bytes": 560,
+          "path": "artifacts/q_table.npy",
+          "sha256": "61cce1915bd5798f53c22529c9dbdca52b38c2c946a5b186e28e2d777f19738e"
+        }
+      ],
+      "declared_argv": [
+        "python",
+        "scripts/replay_rl.py",
+        "--config",
+        "configs/td4_rl_config.yaml",
+        "--q-table",
+        "artifacts/q_table.npy",
+        "--output",
+        "evidence/replay/reinforcement_learning/result.json"
+      ],
+      "output_after": {
+        "bytes": 2853,
+        "exists": true,
+        "inode": 5910974513868348,
+        "mtime_ns": 1795714347050726200,
+        "path": "evidence/replay/reinforcement_learning/result.json",
+        "sha256": "65be4709db2b573702c07f410cfcb241587d2c18a9e83ebb4e08ab8f30aa4280"
+      },
+      "output_before": {
+        "bytes": 2853,
+        "exists": true,
+        "inode": 5910974513868348,
+        "mtime_ns": 1795714237919925300,
+        "path": "evidence/replay/reinforcement_learning/result.json",
+        "sha256": "65be4709db2b573702c07f410cfcb241587d2c18a9e83ebb4e08ab8f30aa4280"
+      },
+      "script": {
+        "bytes": 3642,
+        "path": "scripts/replay_rl.py",
+        "sha256": "525fb32c7e977c79ba520c4f00bd8e5b57e368e26d9356bb88da6ebdead6b634"
+      },
+      "seconds": 2.323602,
+      "strand": "reinforcement_learning"
+    }
+  ],
+  "schema_version": 2,
+  "started_at_utc": "2026-11-26T17:32:21.794431Z",
+  "status": "success",
+  "total_seconds": 5.422686
+}

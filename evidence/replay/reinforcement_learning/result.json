@@ -1,0 +1,130 @@
+{
+  "frozen_replay_only": true,
+  "q_table_sha256": "61cce1915bd5798f53c22529c9dbdca52b38c2c946a5b186e28e2d777f19738e",
+  "q_table_shape": [
+    9,
+    2,
+    3
+  ],
+  "strand": "reinforcement_learning",
+  "td4_development_replay": {
+    "seeds": [
+      100011,
+      100023,
+      100037,
+      100051,
+      100071
+    ],
+    "summary": {
+      "q_learning": {
+        "cost_ci95": [
+          36.5255,
+          49.0345
+        ],
+        "cost_mean": 42.78,
+        "episodes": 5,
+        "fill_rate_ci95": [
+          0.9763,
+          0.9937
+        ],
+        "fill_rate_mean": 0.985,
+        "mean_order_quantity": 1.26,
+        "mean_stock": 1.225,
+        "unmet_demand_mean": 1.8
+      },
+      "random": {
+        "cost_ci95": [
+          72.6265,
+          102.8735
+        ],
+        "cost_mean": 87.75,
+        "episodes": 5,
+        "fill_rate_ci95": [
+          0.7113,
+          0.9137
+        ],
+        "fill_rate_mean": 0.8125,
+        "mean_order_quantity": 0.995,
+        "mean_stock": 2.02,
+        "unmet_demand_mean": 15.2
+      },
+      "reorder": {
+        "cost_ci95": [
+          36.7858,
+          48.1742
+        ],
+        "cost_mean": 42.48,
+        "episodes": 5,
+        "fill_rate_ci95": [
+          0.9791,
+          0.9976
+        ],
+        "fill_rate_mean": 0.9883,
+        "mean_order_quantity": 1.27,
+        "mean_stock": 1.285,
+        "unmet_demand_mean": 1.4
+      }
+    }
+  },
+  "tdo2_public_safety_replay": {
+    "cost_within_105pct_reorder": true,
+    "seeds": [
+      200011,
+      200023,
+      200037,
+      200051,
+      200071
+    ],
+    "service_floor_met": true,
+    "summary": {
+      "q_learning": {
+        "cost_ci95": [
+          32.4894,
+          43.9506
+        ],
+        "cost_mean": 38.22,
+        "episodes": 5,
+        "fill_rate_ci95": [
+          0.9715,
+          0.9985
+        ],
+        "fill_rate_mean": 0.985,
+        "mean_order_quantity": 1.22,
+        "mean_stock": 0.905,
+        "unmet_demand_mean": 1.8
+      },
+      "random": {
+        "cost_ci95": [
+          57.2891,
+          93.3709
+        ],
+        "cost_mean": 75.33,
+        "episodes": 5,
+        "fill_rate_ci95": [
+          0.8066,
+          0.9701
+        ],
+        "fill_rate_mean": 0.8883,
+        "mean_order_quantity": 1.075,
+        "mean_stock": 2.415,
+        "unmet_demand_mean": 9.0
+      },
+      "reorder": {
+        "cost_ci95": [
+          34.9806,
+          43.0794
+        ],
+        "cost_mean": 39.03,
+        "episodes": 5,
+        "fill_rate_ci95": [
+          0.9774,
+          0.9959
+        ],
+        "fill_rate_mean": 0.9867,
+        "mean_order_quantity": 1.225,
+        "mean_stock": 1.015,
+        "unmet_demand_mean": 1.6
+      }
+    }
+  }
+}

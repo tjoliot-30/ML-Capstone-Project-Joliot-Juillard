@@ -1,0 +1,7 @@
+{
+  "completed_at_utc": "2026-11-26T17:32:27.220224Z",
+  "receipt": "evidence/quick_replay_receipt.json",
+  "receipt_sha256": "d4cbabcdf87799a95b3079602be37ecc9e7ee2c1fe561e883b1302bc154cf823",
+  "schema_version": 2,
+  "status": "success"
+}

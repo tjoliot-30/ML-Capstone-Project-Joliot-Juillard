@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>daily_demand</title><link rel="stylesheet" href="../../../student.css"></head><body><a class="skip" href="#main">Skip to content</a><nav aria-label="Course"><a href="../../../index.html">Course start</a> · <a href="../../../00_start/SETUP.html">Setup</a> · <a href="../../../interactive/index.html">Companion / Book</a></nav><main id="main" tabindex="-1"><h1 id="data-card--daily-demand">Data card — daily demand</h1>
+<ul>
+<li><strong>Purpose:</strong> rolling-origin point and interval forecast evaluation in TDo1.</li>
+<li><strong>Canonical scope:</strong> 1,461 consecutive daily observations (four years including leap day).</li>
+<li><strong>Public development split:</strong> the first 1,433 targets.</li>
+<li><strong>Final horizon:</strong> the last 28 dates and known descriptors are public; targets are instructor-controlled and excluded from student exports.</li>
+<li><strong>Target:</strong> recorded <code>demand_units</code>; known descriptors are <code>promotion</code>, <code>holiday_period</code>, and <code>stockout_flag</code>.</li>
+<li><strong>Patterns:</strong> trend, weekly and annual seasonality, intermittent promotion/holiday effects, permanent level shifts at generator indices 850 and 1,200, noise, and two stockout-censoring windows.</li>
+<li><strong>Generation:</strong> deterministic instructor-maintained offline process; no public target generator is distributed.</li>
+<li><strong>Protocol warning:</strong> no random split and no future-informed preprocessing. All models use identical forecast origins and horizons.</li>
+<li><strong>Limits:</strong> recorded demand during <code>stockout_flag=1</code> is censored sales, not latent unconstrained demand. One synthetic series cannot support universal superiority claims; finite-sample interval coverage is uncertain.</li>
+<li><strong>Privacy/terms:</strong> synthetic and free of personal/proprietary records; internal ESILV module use only pending the written licence decision in <code>NOTICE.md</code>.</li>
+</ul>
+</main></body></html>

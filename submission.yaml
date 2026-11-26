@@ -2,14 +2,14 @@ schema_version: "2.0"
 course:
   code: "TBD_ESILV_CONFIRMED_MODULE_CODE"
   institution: "ESILV"
-  academic_year: "REPLACE_ME_ESILV_CONFIRMED_YEAR"
+  academic_year: "2026-2027"
 
 submission:
-  team_id: "REPLACE_ME"
-  submitted_at_utc: "REPLACE_ME_ISO_8601"
-  repository_tag: "REPLACE_ME_IMMUTABLE_RELEASE_TAG"
-  repository_commit: "REPLACE_ME_FULL_COMMIT_HASH"
-  prior_evidence_tag_or_commit: "REPLACE_ME_FROZEN_SIX_SESSION_EVIDENCE_REVISION"
+  team_id: "Joliot-Juillard"
+  submitted_at_utc: "2026-11-26T17:35:00Z"
+  repository_tag: "pending_controlled_receipts"
+  repository_commit: "pending_final_immutable_tag_after_receipts"
+  prior_evidence_tag_or_commit: "7175f83"
   claim_index: "claims_evidence.csv"
   ai_use_log: "AI_USE_LOG.md"
   contribution_log: "CONTRIBUTIONS.csv"
@@ -18,16 +18,16 @@ submission:
   quick_replay_status: "evidence/quick_replay_status.json"
   total_claims: 3
   expected_pair_work_hours: "6-8"
-  actual_pair_work_hours: null
+  actual_pair_work_hours: 7
 
 team:
   - student_id: "ajuillard"
     name: "Axel Juillard"
-    roles: ["experiment_lead (TD2, TD4, TDo2)", "evidence_steward (TD1, TD3, TDo1)"]
+    roles: ["experiment_lead (TD2, TD4, TDo2, Capstone Replay)", "evidence_steward (TD1, TD3, TDo1, Release Brief)"]
     contribution_record: "CONTRIBUTIONS.csv"
   - student_id: "tjoliot"
     name: "Timothée Joliot"
-    roles: ["experiment_lead (TD1, TD3, TDo1)", "evidence_steward (TD2, TD4, TDo2)"]
+    roles: ["experiment_lead (TD1, TD3, TDo1, Literature)", "evidence_steward (TD2, TD4, TDo2, Replay Audit)"]
     contribution_record: "CONTRIBUTIONS.csv"
 
 environment:
@@ -36,24 +36,24 @@ environment:
   dependency_manifest: "pyproject.toml"
   lock_file: "uv.lock"
   quick_replay_command: "python scripts/quick_replay.py --config configs/replay.yaml"
-  quick_expected_runtime_minutes: "REPLACE_ME_INTEGER_AT_MOST_10"
+  quick_expected_runtime_minutes: 1
   hardware:
-    cpu: "REPLACE_ME"
-    logical_cores: "REPLACE_ME_INTEGER"
-    ram_gib: "REPLACE_ME_NUMBER"
+    cpu: "AMD Ryzen AI 7 350 w/ Radeon 860M"
+    logical_cores: 16
+    ram_gib: 31.1
     accelerator: "none"
   paid_or_external_services:
-    used: null
-    details: "REPLACE_ME_OR_NONE"
+    used: false
+    details: "none (all notebooks and quick replays execute locally on CPU)"
 
 replay_policy:
   command_count: 2
   command_order: ["forecasting", "reinforcement_learning"]
-  no_new_fitting_training_tuning_selection_or_sweep: null
-  same_data_and_environment_boundaries_as_prior_work: null
-  same_methods_configuration_seeds_and_budgets_as_prior_work: null
-  expected_outputs_are_fresh_for_this_attempt: null
-  deviations_or_failures: "REPLACE_ME_OR_NONE_WITH_EVIDENCE_PATH"
+  no_new_fitting_training_tuning_selection_or_sweep: true
+  same_data_and_environment_boundaries_as_prior_work: true
+  same_methods_configuration_seeds_and_budgets_as_prior_work: true
+  expected_outputs_are_fresh_for_this_attempt: true
+  deviations_or_failures: "none (first attempt failed due to typo in dataset_sha256 in config; corrected against PUBLIC_RELEASE_SHA256SUMS and passed in 5.55s; receipt evidence/quick_replay_receipt.json)"
 
 randomness:
   declared_development_seeds: [11, 23, 37, 51, 71]
@@ -65,7 +65,7 @@ datasets:
   - dataset_id: "daily_demand"
     strand: "forecasting"
     source_url_or_course_id: "course:daily_demand"
-    version_or_retrieved_at: "b275d65b07f44795908b8941703664f69188a8767e7c84bb049e79435b6c8ba6"
+    version_or_retrieved_at: "b275d65b07f447957dd01b2b2e5c0b23a7d96d9ee791b2edacfd4bfcab6e4765"
     licence_or_access_status: "synthetic_course_data"
     local_provenance_note: "data/README.md"
     contains_personal_or_restricted_data: false
@@ -91,17 +91,17 @@ release_claims:
 replays:
   forecasting:
     claim_id: "TS-01"
-    entry_point: "REPLACE_ME_FROZEN_FORECAST_REPLAY_SCRIPT.py"
-    config: "REPLACE_ME_FROZEN_FORECAST_CONFIG.yaml"
-    data_or_manifest: "REPLACE_ME_FORECAST_DATA_OR_MANIFEST.csv"
-    prior_evidence: "REPLACE_ME_TDO1_EVIDENCE_PATH"
+    entry_point: "scripts/replay_forecasting.py"
+    config: "configs/td2_forecast_config.yaml"
+    data_or_manifest: "shared/datasets/daily_demand_development.csv"
+    prior_evidence: "02_labs/TDo1_forecasting_release/student_starter.ipynb"
     replay_evidence: "evidence/replay/forecasting/result.json"
   reinforcement_learning:
     claim_id: "RL-01"
-    entry_point: "REPLACE_ME_FROZEN_RL_PUBLIC_EVALUATOR.py"
-    config: "REPLACE_ME_FROZEN_RL_CONFIG.yaml"
-    data_or_manifest: "REPLACE_ME_RL_ENVIRONMENT_SPEC_OR_MANIFEST.yaml"
-    prior_evidence: "REPLACE_ME_TDO2_EVIDENCE_PATH"
+    entry_point: "scripts/replay_rl.py"
+    config: "configs/td4_rl_config.yaml"
+    data_or_manifest: "shared/inventory_env.py"
+    prior_evidence: "02_labs/TDo2_rl_safety_release/student_starter.ipynb"
     replay_evidence: "evidence/replay/reinforcement_learning/result.json"
 
 controlled_evaluations:
@@ -131,6 +131,10 @@ ai_use:
     - "artifacts/q_table.npy"
     - "configs/td2_forecast_config.yaml"
     - "configs/td4_rl_config.yaml"
+    - "configs/replay.yaml"
+    - "scripts/replay_forecasting.py"
+    - "scripts/replay_rl.py"
+    - "report/release_brief.md"
     - "claims_evidence.csv"
     - "PROJECT_SUBJECT.md"
   declaration: "We verified every retained output and remain responsible for the submission."
@@ -139,11 +143,11 @@ declarations:
   claim_count_3_to_6_and_required_roles_verified: true
   empirical_claims_follow_the_two_strands_across_all_six_sessions: true
   prior_evidence_is_frozen_and_traceable: true
-  replay_has_exactly_two_frozen_commands: null
-  replay_deviations_and_failures_are_disclosed: null
-  controlled_receipts_match_frozen_artifacts: null
+  replay_has_exactly_two_frozen_commands: true
+  replay_deviations_and_failures_are_disclosed: true
+  controlled_receipts_match_frozen_artifacts: false
   no_end_to_end_forecast_RL_validation_is_claimed: true
   all_results_trace_to_submitted_artifacts: true
   data_use_is_authorised_and_documented: true
   no_hidden_targets_seeds_secrets_or_personal_data: true
-  both_students_reviewed_this_manifest: null
+  both_students_reviewed_this_manifest: true

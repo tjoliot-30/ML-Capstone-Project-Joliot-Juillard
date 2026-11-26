@@ -3,21 +3,40 @@ commands:
   - strand: forecasting
     frozen_replay_only: true
     changes_model_or_protocol: false
-    script_path: "REPLACE_ME_FORECAST_REPLAY_SCRIPT.py"
-    argv: ["python", "REPLACE_ME_FORECAST_REPLAY_SCRIPT.py", "--config", "REPLACE_ME_FORECAST_CONFIG.yaml", "--output", "evidence/replay/forecasting/result.json"]
+    script_path: "scripts/replay_forecasting.py"
+    argv:
+      - "python"
+      - "scripts/replay_forecasting.py"
+      - "--config"
+      - "configs/td2_forecast_config.yaml"
+      - "--dev-csv"
+      - "shared/datasets/daily_demand_development.csv"
+      - "--forecast"
+      - "artifacts/final_forecast.csv"
+      - "--output"
+      - "evidence/replay/forecasting/result.json"
     configuration_inputs:
-      - "REPLACE_ME_FORECAST_CONFIG.yaml"
+      - "configs/td2_forecast_config.yaml"
     data_inputs:
-      - "REPLACE_ME_FORECAST_DATA_OR_MANIFEST.csv"
+      - "shared/datasets/daily_demand_development.csv"
+      - "artifacts/final_forecast.csv"
     expected_output: "evidence/replay/forecasting/result.json"
   - strand: reinforcement_learning
     frozen_replay_only: true
     changes_model_or_protocol: false
-    script_path: "REPLACE_ME_RL_PUBLIC_EVALUATOR.py"
-    argv: ["python", "REPLACE_ME_RL_PUBLIC_EVALUATOR.py", "--config", "REPLACE_ME_RL_CONFIG.yaml", "--q-table", "artifacts/q_table.npy", "--output", "evidence/replay/reinforcement_learning/result.json"]
+    script_path: "scripts/replay_rl.py"
+    argv:
+      - "python"
+      - "scripts/replay_rl.py"
+      - "--config"
+      - "configs/td4_rl_config.yaml"
+      - "--q-table"
+      - "artifacts/q_table.npy"
+      - "--output"
+      - "evidence/replay/reinforcement_learning/result.json"
     configuration_inputs:
-      - "REPLACE_ME_RL_CONFIG.yaml"
+      - "configs/td4_rl_config.yaml"
     data_inputs:
-      - "REPLACE_ME_RL_ENVIRONMENT_SPEC_OR_MANIFEST.yaml"
+      - "shared/inventory_env.py"
       - "artifacts/q_table.npy"
     expected_output: "evidence/replay/reinforcement_learning/result.json"
