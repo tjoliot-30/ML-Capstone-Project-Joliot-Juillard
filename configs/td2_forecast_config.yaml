@@ -1,0 +1,30 @@
+# Frozen TD2 Forecasting Development Configuration
+dataset_id: "daily_demand_development.csv"
+dataset_sha256: "b275d65b07f44795908b8941703664f69188a8767e7c84bb049e79435b6c8ba6"
+protocol:
+  rolling_origins: [1250, 1310, 1370]
+  horizon: 14
+  season: 7
+models:
+  seasonal_naive:
+    lag: 7
+  ets:
+    trend: "add"
+    seasonal: "add"
+    seasonal_periods: 7
+  sarima:
+    order: [1, 1, 1]
+    seasonal_order: [1, 0, 1, 7]
+    enforce_stationarity: false
+    enforce_invertibility: false
+    maxiter: 50
+selection_rule:
+  primary_metric: "MAE"
+  gate: "Select SARIMA for TDo1 interval release if mean MAE <= 1.05 * best_dev_mean_MAE"
+  selected_candidate: "sarima"
+  fallback_models: ["ets", "seasonal_naive"]
+  dev_results:
+    sarima_mae_mean: 6.136343
+    ets_mae_mean: 6.165729
+    seasonal_naive_mae_mean: 7.285714
+    failure_origin: 1370

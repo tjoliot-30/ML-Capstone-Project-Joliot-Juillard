@@ -1,0 +1,30 @@
+# Frozen TD3/TD4 RL MDP & Tabular Q-Learning Configuration
+environment_id: "InventoryControlEnv"
+mdp_config:
+  max_stock: 8
+  horizon: 40
+  order_cost: 0.45
+  holding_cost: 0.30
+  unmet_demand_cost: 3.00
+  regime_transition: [[0.85, 0.15], [0.20, 0.80]]
+training_protocol:
+  seeds: [11, 23, 37, 51, 71]
+  episodes_per_seed: 350
+  total_episodes: 1750
+  alpha: 0.18
+  gamma: 0.96
+  epsilon_start: 0.85
+  epsilon_end: 0.05
+  action_rng_seed: 11
+  truncation_bootstrap: true
+development_evaluation:
+  disjoint_seeds: [100011, 100023, 100037, 100051, 100071]
+  results_mean:
+    q_learning: {cost: 42.78, fill_rate: 0.9850, unmet_demand: 1.8}
+    reorder: {cost: 42.48, fill_rate: 0.9883, unmet_demand: 1.4}
+    random: {cost: 87.75, fill_rate: 0.8125, unmet_demand: 15.2}
+frozen_artifact:
+  path: "artifacts/q_table.npy"
+  shape: [9, 2, 3]
+  sha256: "61cce1915bd5798f53c22529c9dbdca52b38c2c946a5b186e28e2d777f19738e"
+  fallback_policy: "reorder_policy (low_target=2, high_target=4)"

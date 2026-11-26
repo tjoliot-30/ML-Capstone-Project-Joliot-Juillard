@@ -21,20 +21,20 @@ submission:
   actual_pair_work_hours: null
 
 team:
-  - student_id: "REPLACE_ME"
+  - student_id: "ajuillard"
     name: "Axel Juillard"
-    roles: ["REPLACE_ME"]
+    roles: ["experiment_lead (TD2, TD4)", "evidence_steward (TD1, TD3)"]
     contribution_record: "CONTRIBUTIONS.csv"
-  - student_id: "REPLACE_ME"
+  - student_id: "tjoliot"
     name: "Timothée Joliot"
-    roles: ["REPLACE_ME"]
+    roles: ["experiment_lead (TD1, TD3)", "evidence_steward (TD2, TD4)"]
     contribution_record: "CONTRIBUTIONS.csv"
 
 environment:
   operating_system: "Windows"
   python_version: "3.12.16"
-  dependency_manifest: "REPLACE_ME_RELATIVE_PATH"
-  lock_file: "REPLACE_ME_RELATIVE_PATH"
+  dependency_manifest: "pyproject.toml"
+  lock_file: "uv.lock"
   quick_replay_command: "python scripts/quick_replay.py --config configs/replay.yaml"
   quick_expected_runtime_minutes: "REPLACE_ME_INTEGER_AT_MOST_10"
   hardware:
@@ -57,7 +57,7 @@ replay_policy:
 
 randomness:
   declared_development_seeds: [11, 23, 37, 51, 71]
-  development_seed_configuration_path: "REPLACE_ME_RELATIVE_PATH"
+  development_seed_configuration_path: "configs/td4_rl_config.yaml"
   hidden_forecast_targets_exported_to_student_repository: false
   hidden_rl_seed_values_exported_to_student_repository: false
 
@@ -65,7 +65,7 @@ datasets:
   - dataset_id: "daily_demand"
     strand: "forecasting"
     source_url_or_course_id: "course:daily_demand"
-    version_or_retrieved_at: "REPLACE_ME_SHA256_OR_MANIFEST_VERSION"
+    version_or_retrieved_at: "b275d65b07f44795908b8941703664f69188a8767e7c84bb049e79435b6c8ba6"
     licence_or_access_status: "synthetic_course_data"
     local_provenance_note: "data/README.md"
     contains_personal_or_restricted_data: false
@@ -74,7 +74,7 @@ environments:
   - environment_id: "InventoryControlEnv"
     strand: "reinforcement_learning"
     package_and_version: "course_shared_code_at_repository_commit"
-    specification_path: "REPLACE_ME_RELATIVE_PATH"
+    specification_path: "configs/td4_rl_config.yaml"
 
 release_claims:
   forecasting_release:
@@ -113,7 +113,7 @@ controlled_evaluations:
     hidden_targets_exported: false
   reinforcement_learning:
     frozen_artifact: "artifacts/q_table.npy"
-    artifact_sha256: "REPLACE_ME_SHA256"
+    artifact_sha256: "61cce1915bd5798f53c22529c9dbdca52b38c2c946a5b186e28e2d777f19738e"
     evidence_id: "REPLACE_ME_INSTRUCTOR_EVIDENCE_ID"
     aggregate_path: "evidence/controlled/rl_hidden_evaluation_aggregate.csv"
     aggregate_sha256_path: "evidence/controlled/rl_hidden_evaluation_aggregate.csv.sha256"
@@ -122,9 +122,14 @@ controlled_evaluations:
     hidden_seed_values_exported: false
 
 ai_use:
-  used: null
-  tools: []
-  material_artifacts_affected: []
+  used: true
+  tools: ["AI Coding Assistant"]
+  material_artifacts_affected:
+    - "02_labs/TD1..TD4 starter notebooks"
+    - "configs/td2_forecast_config.yaml"
+    - "configs/td4_rl_config.yaml"
+    - "claims_evidence.csv"
+    - "PROJECT_SUBJECT.md"
   declaration: "We verified every retained output and remain responsible for the submission."
 
 declarations:

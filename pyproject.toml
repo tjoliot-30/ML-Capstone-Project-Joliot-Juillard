@@ -1,0 +1,32 @@
+[project]
+name = "advanced-ml-operations-decisions"
+version = "0.1.0"
+description = "Reproducible, CPU-safe laboratories for Advanced Machine Learning"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "gymnasium>=1.0,<2",
+  "jedi>=0.19,<1",
+  "matplotlib>=3.9,<4",
+  "nbformat>=5.10,<6",
+  "numpy>=1.26,<2.3",
+  "pandas>=2.2,<2.3",
+  "pypdf>=5,<7",
+  "pyyaml>=6.0,<7",
+  "scikit-learn>=1.5,<2",
+  "scipy>=1.13,<2",
+  "statsmodels>=0.14,<1",
+]
+
+[dependency-groups]
+dev = [
+  "ipykernel>=6.29,<8",
+  "nbclient>=0.10,<1",
+  "nbconvert>=7.16,<8",
+  "pdfplumber>=0.11,<1",
+  "pytest>=8.3,<10",
+  "reportlab>=4,<5",
+]
+
+[tool.uv]
+package = false
+

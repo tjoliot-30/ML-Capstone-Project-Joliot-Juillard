@@ -7,33 +7,47 @@
 
 ```text
 ML-Capstone-Project-Joliot-Juillard/
-├── README.md               # Repository overview and metadata
-├── PROJECT_SUBJECT.md      # Concise project subject description (English)
-├── submission.yaml         # Formal submission metadata
-├── claims_evidence.csv     # Scientific claims index (TS-01, RL-01, OPS-01)
-├── AI_USE_LOG.md           # Generative AI transparency log
-├── CONTRIBUTIONS.csv       # Pair rotating roles log (lead / steward)
-├── configs/replay.yaml     # Replay configuration
-├── data/README.md          # Data provenance and cryptographic hashes
-├── artifacts/              # Frozen deliverables (final_forecast.csv, q_table.npy)
-├── evidence/               # Controlled receipts and replay outputs
-├── report/release_brief.md # Final synthesis brief (≤ 4 pages)
-└── scripts/quick_replay.py # Fail-closed replay runner
+├── README.md                        # Repository overview and metadata
+├── PROJECT_SUBJECT.md               # Concise project subject description (English)
+├── submission.yaml                  # Formal submission metadata
+├── claims_evidence.csv              # Scientific claims index (TS-01, RL-01, OPS-01)
+├── AI_USE_LOG.md                    # Generative AI transparency log
+├── CONTRIBUTIONS.csv                # Pair rotating roles log (lead / steward)
+├── configs/
+│   ├── replay.yaml                  # Replay configuration (to be completed at Capstone)
+│   ├── td2_forecast_config.yaml     # Frozen TD2 rolling-origin model configuration
+│   └── td4_rl_config.yaml           # Frozen TD3/TD4 MDP & Q-learning configuration
+├── data/README.md                   # Data provenance and cryptographic hashes
+├── artifacts/
+│   └── q_table.npy                  # Frozen TD4 Q-table (9, 2, 3)
+├── evidence/                        # Controlled receipts and replay outputs
+├── report/release_brief.md          # Final synthesis brief (≤ 4 pages)
+└── scripts/quick_replay.py          # Fail-closed replay runner
 ```
 
 ## Project Summary
 This project models the critical supply chain of a Hospital In-House Pharmacy (PUI) managing Major Therapeutic Interest Medicines (MITM). The **Time Series** strand forecasts 28-day antibiotic demand while accounting for censored demand during stockouts (`stockout_flag=1`). The **Reinforcement Learning** strand trains a tabular Q-learning agent to balance cold-storage costs against the severe clinical risks of ICU stockouts.
 
+## Development Progress (TD1 – TD4)
+
+| Session | Status | Key Outcome & Evidence |
+|---|---|---|
+| **TD1** | ✅ Completed | Temporal data contract verified (`1433` rows, `b275d65b...`), lag-7 seasonal-naive baseline MAE `9.61` vs mean `12.56`. |
+| **TD2** | ✅ Completed | 3-origin rolling comparison (`1250, 1310, 1370`): SARIMA mean MAE `6.14`, ETS `6.17`, seasonal-naive `7.29`; SARIMA frozen under 5% gate (`configs/td2_forecast_config.yaml`). |
+| **TD3** | ✅ Completed | MDP & reward decomposition verified (`reward == -cost`); regime-aware reorder cuts cost vs random (`41.16` vs `88.20`) with `99.17%` fill rate. |
+| **TD4** | ✅ Completed | Explicit 1,750-episode tabular Q-learning trained; frozen `artifacts/q_table.npy` (`SHA256: 61cce191...`) achieves `42.78` cost and `98.50%` fill rate on 5 disjoint dev seeds (vs reorder `42.48`). |
+| **TDo1** | ⏳ Pending | Protected 28-day forecasting release & receipt. |
+| **TDo2** | ⏳ Pending | Controlled hidden-seed RL safety evaluation & individual verification. |
+
 ## Environment & Pair Metadata
 
-- **Authors:** Axel Juillard & Timothée Joliot
+- **Authors:** Axel Juillard & Timothée Joliot (alternating `experiment_lead` & `evidence_steward` across TD1–TD4)
 - **Operating System:** Windows (x86_64)
-- **Python Environment:** Python 3.12.16 locked via `uv`
-- **TD1 Status:** Baseline evidence recorded (`TS-01` in `claims_evidence.csv`, lag-7 MAE 9.61 vs. mean 12.56)
+- **Python Environment:** Python 3.12.16 locked via `uv` (`pyproject.toml` / `uv.lock`)
 
 ## Quick Replay
 
-From the repository root:
+From the repository root (once configured after TDo1/TDo2):
 
 ```bash
 python scripts/quick_replay.py --config configs/replay.yaml

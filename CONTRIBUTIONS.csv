@@ -1,2 +1,9 @@
 date_utc,session_or_artifact,student_id,role,contribution,claim_ids,evidence_path,reviewed_by
-REPLACE_ME,TD1,REPLACE_ME,forecast_baseline_owner,"Initialized portfolio; froze temporal boundary and seasonal-naive baseline pointers",TS-01,REPLACE_ME_TD1_EVIDENCE_PATH,REPLACE_ME
+2026-11-20,TD1,tjoliot,experiment_lead,"Implemented temporal data invariants, negative test, and three baseline forecasts on 28-day validation block",TS-01,02_labs/TD1_temporal_data_baselines/student_starter.ipynb,ajuillard
+2026-11-20,TD1,ajuillard,evidence_steward,"Initialized pair Git repository, verified dataset SHA256, documented health use case and TS-01 provenance",TS-01,PROJECT_SUBJECT.md,tjoliot
+2026-11-26,TD2,ajuillard,experiment_lead,"Implemented 3-origin rolling comparison (seasonal naive, additive ETS, SARIMA) and Ljung-Box diagnostics",TS-01,02_labs/TD2_rolling_origin_models/student_starter.ipynb,tjoliot
+2026-11-26,TD2,tjoliot,evidence_steward,"Recorded 9 fold scores, origin-1370 failure mode, frozen TDo1 selection rule and td2_forecast_config.yaml",TS-01,configs/td2_forecast_config.yaml,ajuillard
+2026-11-26,TD3,tjoliot,experiment_lead,"Verified InventoryControlEnv MDP contract, reward decomposition check, and 5-seed random/reorder baselines",RL-01,02_labs/TD3_mdp_reward_baselines/student_starter.ipynb,ajuillard
+2026-11-26,TD3,ajuillard,evidence_steward,"Mapped healthcare ICU stockout cost asymmetry and recorded baseline comparator metrics in claims_evidence.csv",RL-01,claims_evidence.csv,tjoliot
+2026-11-26,TD4,ajuillard,experiment_lead,"Implemented 1750-episode tabular Q-learning loop with linear epsilon decay and truncation bootstrapping",RL-01,02_labs/TD4_tabular_q_learning/student_starter.ipynb,tjoliot
+2026-11-26,TD4,tjoliot,evidence_steward,"Evaluated frozen Q-table on 5 disjoint dev seeds, saved artifacts/q_table.npy with SHA256 and td4_rl_config.yaml",RL-01,artifacts/q_table.npy,ajuillard
